@@ -1,0 +1,4 @@
+.whiteboard-markdown { min-width: 0; overflow-wrap: anywhere; }
+.whiteboard-markdown pre { max-width: 100%; overflow-x: auto; white-space: pre; }
+.whiteboard-mermaid { max-width: 100%; min-width: 0; overflow-x: auto; }
+.whiteboard-mermaid summary { cursor: pointer; }

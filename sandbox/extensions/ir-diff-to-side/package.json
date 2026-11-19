@@ -1,0 +1,23 @@
+{
+  "name": "interview-runner-diff-to-side",
+  "displayName": "Interview Runner Diff to Side",
+  "description": "Restores the saved workbench, opens editable drill files, and keeps Git diffs in one right-hand group.",
+  "version": "1.0.0",
+  "publisher": "interview-runner",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "extensionDependencies": ["vscode.git"],
+  "contributes": {
+    "commands": [
+      { "command": "interview-runner.viewExplorer", "title": "Interview Runner: Show Explorer" },
+      { "command": "interview-runner.viewSourceControl", "title": "Interview Runner: Show Source Control" },
+      { "command": "interview-runner.togglePrimarySidebar", "title": "Interview Runner: Toggle Primary Side Bar" },
+      { "command": "interview-runner.toggleSecondarySidebar", "title": "Interview Runner: Toggle Secondary Side Bar" },
+      { "command": "interview-runner.togglePanel", "title": "Interview Runner: Toggle Panel" }
+    ]
+  },
+  "main": "./extension.js"
+}

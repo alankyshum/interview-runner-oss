@@ -1,0 +1,15 @@
+.cheatsheet-hero { width: 100%; margin-block: 1rem; }
+.cheatsheet-hero-card { display: flex; flex-direction: column; width: 100%; height: 500px; padding: 1rem; border: 1px solid var(--ir-color-border); border-radius: var(--ir-radius-default); color: var(--ir-color-text); background: var(--ir-color-surface); text-align: left; cursor: pointer; }
+.cheatsheet-hero-card:focus-visible { outline: 2px solid var(--ir-color-focus); outline-offset: 3px; }
+.cheatsheet-hero-label { font-weight: 600; }
+.cheatsheet-hero-svg { display: block; width: 100%; height: 100%; min-height: 0; color: var(--ir-color-text); --markmap-text-color: var(--ir-color-text); --markmap-circle-open-bg: var(--ir-color-surface); }
+.cheatsheet-content .cheatsheet-hero-card svg.markmap, .cheatsheet-map-container svg.markmap { color: var(--ir-color-text); font: 400 16px/24px var(--mantine-font-family); --markmap-text-color: var(--ir-color-text); --markmap-circle-open-bg: var(--ir-color-surface); filter: none; }
+.cheatsheet-hero-card .cheatsheet-hero-svg { pointer-events: none; flex: 1; }
+.mantine-Modal-inner.cheatsheet-map-modal { inset: 0; width: 100%; height: 100%; padding: 1rem; }
+.mantine-Modal-content.cheatsheet-map-modal { width: 100%; max-width: none; height: 100%; max-height: 100%; display: flex; flex-direction: column; }
+.cheatsheet-map-header { flex: 0 0 auto; }
+.cheatsheet-map-body { flex: 1; min-height: 0; padding: 0 1rem 1rem; }
+.cheatsheet-map-container { position: relative; width: 100%; height: 100%; overflow: hidden; border: 1px solid var(--ir-color-border); border-radius: var(--ir-radius-default); }
+.cheatsheet-map-actions { position: absolute; top: .75rem; right: .75rem; display: flex; gap: .5rem; }
+.cheatsheet-map-actions button { border-radius: var(--ir-radius-default); box-shadow: var(--ir-shadow-overlay); }
+@media print { .cheatsheet-hero { display: none; } }

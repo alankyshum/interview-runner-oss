@@ -1,0 +1,568 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Course or cheatsheet manifest v2",
+  "description": "Structural checks only; use the course validate CLI for full semantic and filesystem validation.",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "map-recall"
+        },
+        "book": {
+          "const": true
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "title": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "company": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "tier": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "role": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "interviewDate": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "deadline": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "createdAt": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "updatedAt": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "tags": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+          }
+        },
+        "chapters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]*$"
+              },
+              "title": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "drills": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9][a-z0-9-]*$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "kind": {
+                          "enum": [
+                            "logic",
+                            "scratch"
+                          ]
+                        },
+                        "estMinutes": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "sourcePath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "instructions": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "contentType": {
+                          "const": "coding"
+                        },
+                        "testPath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "scaffold": {
+                          "type": "object",
+                          "properties": {
+                            "seedPath": {
+                              "type": "string",
+                              "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                            }
+                          },
+                          "required": [
+                            "seedPath"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "contentType",
+                        "kind",
+                        "estMinutes",
+                        "sourcePath",
+                        "instructions",
+                        "testPath"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9][a-z0-9-]*$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "kind": {
+                          "enum": [
+                            "logic",
+                            "scratch"
+                          ]
+                        },
+                        "estMinutes": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "sourcePath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "instructions": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "contentType": {
+                          "const": "reading"
+                        },
+                        "outlinePath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "scaffold": {
+                          "type": "object",
+                          "properties": {
+                            "seedPath": {
+                              "type": "string",
+                              "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                            }
+                          },
+                          "required": [
+                            "seedPath"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "contentType",
+                        "kind",
+                        "estMinutes",
+                        "sourcePath",
+                        "instructions",
+                        "outlinePath"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9][a-z0-9-]*$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "kind": {
+                          "enum": [
+                            "logic",
+                            "scratch"
+                          ]
+                        },
+                        "estMinutes": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "sourcePath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "instructions": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "contentType": {
+                          "const": "ai-coding"
+                        },
+                        "workspacePath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "testRunner": {
+                          "enum": [
+                            "vitest",
+                            "pytest"
+                          ]
+                        },
+                        "handoffPath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "rubricPath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "stageUnlock": {
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "mode": {
+                                  "const": "manual"
+                                }
+                              },
+                              "required": [
+                                "mode"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "mode": {
+                                  "const": "timer"
+                                },
+                                "minutes": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "number",
+                                    "exclusiveMinimum": 0
+                                  },
+                                  "minItems": 0
+                                }
+                              },
+                              "required": [
+                                "mode",
+                                "minutes"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "acceptancePath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "contentType",
+                        "kind",
+                        "estMinutes",
+                        "sourcePath",
+                        "instructions",
+                        "workspacePath",
+                        "testRunner",
+                        "handoffPath",
+                        "rubricPath"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9][a-z0-9-]*$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "kind": {
+                          "enum": [
+                            "logic",
+                            "scratch"
+                          ]
+                        },
+                        "estMinutes": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "sourcePath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "instructions": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "contentType": {
+                          "const": "map"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "contentType",
+                        "kind",
+                        "estMinutes",
+                        "sourcePath",
+                        "instructions"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9][a-z0-9-]*$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "kind": {
+                          "enum": [
+                            "logic",
+                            "scratch"
+                          ]
+                        },
+                        "estMinutes": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "sourcePath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "instructions": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "contentType": {
+                          "const": "recall"
+                        },
+                        "whiteboard": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "contentType",
+                        "kind",
+                        "estMinutes",
+                        "sourcePath",
+                        "instructions"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9][a-z0-9-]*$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "kind": {
+                          "enum": [
+                            "logic",
+                            "scratch"
+                          ]
+                        },
+                        "estMinutes": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "sourcePath": {
+                          "type": "string",
+                          "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                        },
+                        "instructions": {
+                          "type": "string",
+                          "pattern": "\\S"
+                        },
+                        "contentType": {
+                          "const": "whiteboard"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "contentType",
+                        "kind",
+                        "estMinutes",
+                        "sourcePath",
+                        "instructions"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "minItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "drills"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "chapters"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "cheatsheet"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "title": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "chapters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]*$"
+              },
+              "title": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "drills": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]*$"
+                    },
+                    "title": {
+                      "type": "string",
+                      "pattern": "\\S"
+                    },
+                    "contentType": {
+                      "const": "cheatsheet"
+                    },
+                    "headingLevel": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 6
+                    },
+                    "sourcePath": {
+                      "type": "string",
+                      "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                    },
+                    "anchors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 300,
+                        "pattern": "^[^\\s\\u0000-\\u001f\\u007f]+$"
+                      },
+                      "minItems": 0,
+                      "uniqueItems": true
+                    },
+                    "mindmapPath": {
+                      "type": "string",
+                      "pattern": "^(?!/)(?!.*[\\\\:])(?!(?:.*?/)?\\.{1,2}(?:/|$))(?!.*//).+[^/]$|^[^/\\\\:.]$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "contentType",
+                    "headingLevel",
+                    "sourcePath"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "drills"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "title",
+        "chapters"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

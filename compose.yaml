@@ -1,0 +1,93 @@
+# Self-host stack. Do not run Compose directly: `make up` derives every
+# variable below from config.json and generates the sandboxd token.
+name: ${STACK}
+services:
+  runner:
+    image: ${IMAGE}
+    pull_policy: never
+    container_name: ${STACK}-runner
+    restart: unless-stopped
+    init: true
+    user: ${RUN_USER}
+    environment:
+      RUNNER_INSTANCE: ${STACK}
+      RUNNER_ACCESS_MODE: local
+      RUNNER_OWNER: ${OWNER}
+      RUNNER_PRIVATE_DIR: /app/private
+      RUNNER_DB_PATH: /data/${DB_FILE}
+      CONTENT_DB_PATH: /data/content.db
+      INTERVIEW_RUNNER_CONTENT_SOURCE: db
+      XDG_STATE_HOME: /app/state
+      RUNNER_SANDBOX_DRIVER: podman
+      SANDBOXD_URL: http://sandboxd:7070
+      SANDBOXD_TOKEN: ${SANDBOXD_TOKEN:?run make up}
+    ports:
+      # Loopback only. Exposing the runner further (tailscale serve, a reverse
+      # proxy) is the host's business.
+      - "127.0.0.1:${PORT}:3000"
+    volumes:
+      - ${DB_DIR}:/data
+      - ${STATE_DIR}/managed:/app/state/interview-runner/managed
+      - ${PRIVATE_DIR}:/app/private:ro
+    networks:
+      - default
+      - sandbox
+      - control
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/healthz').then(r=>process.exit(r.status===204?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    mem_limit: 512m
+  sandboxd:
+    profiles: [sandbox]
+    image: ${IMAGE}
+    pull_policy: never
+    container_name: ${STACK}-sandboxd
+    command: ["node", "server-dist/sandboxd.mjs"]
+    restart: unless-stopped
+    init: true
+    user: "0"
+    environment:
+      RUNNER_INSTANCE: ${STACK}
+      PODMAN_SOCKET: /run/podman.sock
+      SANDBOX_ALLOWLIST: /app/course-repos.sandbox.json
+      SANDBOX_IMAGE: ${SANDBOX_IMAGE}
+      SANDBOXD_TOKEN: ${SANDBOXD_TOKEN:?run make up}
+      # Same single user database as the runner: workspaces and UI state are saved into it.
+      RUNNER_DB_PATH: /data/${DB_FILE}
+      SANDBOX_UI_STATE_DIR: /data/scratch/ui-state
+      SANDBOX_AUTOSAVE_SECONDS: ${SANDBOX_AUTOSAVE_SECONDS:-60}
+      SANDBOX_SETTINGS_DIR: /app/sandbox-settings
+      SANDBOX_SETTINGS_HOST_DIR: ${STATE_DIR}/sandbox-settings
+      # keybindings.json and settings.json here replace the image's editor defaults.
+      RUNNER_PRIVATE_DIR: /app/private
+    volumes:
+      # The engine API socket as the engine's own host (the VM on macOS) sees it.
+      - ${ENGINE_SOCKET}:/run/podman.sock
+      - ${DB_DIR}:/data
+      - ${RUNTIME}/sandbox-allowlist.json:/app/course-repos.sandbox.json:ro
+      - ${STATE_DIR}/sandbox-settings:/app/sandbox-settings
+      - ${PRIVATE_DIR}:/app/private
+      # sandboxd binds these into sandboxes by host path, so they keep it.
+      - ${STATE_DIR}/managed:${STATE_DIR}/managed:ro
+      - ${STATE_DIR}/managed/workspaces:${STATE_DIR}/managed/workspaces
+    networks:
+      - control
+    security_opt:
+      - label=disable
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:7070/sandboxes',{headers:{authorization:'Bearer '+process.env.SANDBOXD_TOKEN}}).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+networks:
+  default: {}
+  sandbox:
+    # Must equal the network sandboxd attaches sandboxes to: ir-<RUNNER_INSTANCE>-sandbox.
+    name: ir-${STACK}-sandbox
+    internal: true
+  control:
+    internal: true

@@ -1,0 +1,34 @@
+{
+  "id": "sample-course",
+  "title": "Sample course: sliding windows",
+  "tags": ["sample"],
+  "chapters": [
+    {
+      "id": "sliding-windows",
+      "title": "Sliding windows",
+      "drills": [
+        {
+          "id": "overview",
+          "title": "The sliding-window idea",
+          "contentType": "map",
+          "kind": "scratch",
+          "estMinutes": 5,
+          "sourcePath": "mindmaps/sample-course/overview.md",
+          "instructions": "Read the map, then fold the branches and explain each one from memory."
+        },
+        {
+          "id": "max-window-sum",
+          "title": "Largest sum of k consecutive numbers",
+          "contentType": "coding",
+          "kind": "logic",
+          "estMinutes": 15,
+          "sourcePath": "drills/sample-course/max-window-sum/max-window-sum.ts",
+          "testPath": "drills/sample-course/max-window-sum/max-window-sum.test.ts",
+          "instructions": "### Build\nImplement `maxWindowSum(values, k)`: the largest sum of any `k` consecutive numbers in `values`.\n\n### Rules\n- Return `null` when `k` is not a positive integer or is larger than `values.length`.\n- Visit each number a constant number of times: slide the window instead of re-adding it.\n\n### Done\nRun the tests; all of them pass."
+        }
+      ]
+    }
+  ],
+  "createdAt": "2026-11-18T00:00:00Z",
+  "updatedAt": "2026-11-18T00:00:00Z"
+}

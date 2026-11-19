@@ -1,0 +1,39 @@
+{
+  "type": "cheatsheet",
+  "id": "behavioral-interview-cheatsheet",
+  "title": "Behavioral Interview Cheatsheet",
+  "chapters": [
+    {
+      "id": "resolving-disagreements",
+      "title": "Resolving disagreements",
+      "drills": [
+        {
+          "id": "market-data-over-opinion",
+          "title": "Resolving disagreements: let market data decide",
+          "contentType": "cheatsheet",
+          "headingLevel": 2,
+          "sourcePath": "cheatsheets/behavioral-interview-cheatsheet/sections/market-data-over-opinion.html"
+        }
+      ]
+    },
+    {
+      "id": "engineer-to-pm",
+      "title": "Engineer to PM",
+      "drills": [
+        {
+          "id": "engineer-to-pm-experience",
+          "title": "Engineer → PM: getting the right experience",
+          "contentType": "cheatsheet",
+          "headingLevel": 2,
+          "sourcePath": "cheatsheets/behavioral-interview-cheatsheet/sections/engineer-to-pm-experience.html",
+          "mindmapPath": "cheatsheets/behavioral-interview-cheatsheet/diagrams/mindmaps/engineer-to-pm-experience.md"
+        }
+      ]
+    },
+    {"id":"answer-cycle","title":"Decode → Select → Deliver","drills":[{"id":"answer-cycle-reference","title":"Decode → Select → Deliver","contentType":"cheatsheet","headingLevel":2,"sourcePath":"cheatsheets/behavioral-interview-cheatsheet/sections/answer-cycle-reference.html","mindmapPath":"cheatsheets/behavioral-interview-cheatsheet/diagrams/mindmaps/answer-cycle-reference.md"}]},
+    {"id":"signals-and-level","title":"Signals and level","drills":[{"id":"signals-and-level-reference","title":"Eight signals × level","contentType":"cheatsheet","headingLevel":2,"sourcePath":"cheatsheets/behavioral-interview-cheatsheet/sections/signals-and-level-reference.html","mindmapPath":"cheatsheets/behavioral-interview-cheatsheet/diagrams/mindmaps/signals-and-level-reference.md"}]},
+    {"id":"big-three","title":"The Big Three","drills":[{"id":"big-three-reference","title":"The Big Three","contentType":"cheatsheet","headingLevel":2,"sourcePath":"cheatsheets/behavioral-interview-cheatsheet/sections/big-three-reference.html","mindmapPath":"cheatsheets/behavioral-interview-cheatsheet/diagrams/mindmaps/big-three-reference.md"}]},
+    {"id":"pitfalls","title":"Pitfalls","drills":[{"id":"pitfalls-reference","title":"Pitfalls and repairs","contentType":"cheatsheet","headingLevel":2,"sourcePath":"cheatsheets/behavioral-interview-cheatsheet/sections/pitfalls-reference.html","mindmapPath":"cheatsheets/behavioral-interview-cheatsheet/diagrams/mindmaps/pitfalls-reference.md"}]},
+    {"id":"special-and-ai","title":"Special interviews and AI","drills":[{"id":"special-and-ai-reference","title":"Special interviews and AI questions","contentType":"cheatsheet","headingLevel":2,"sourcePath":"cheatsheets/behavioral-interview-cheatsheet/sections/special-and-ai-reference.html","mindmapPath":"cheatsheets/behavioral-interview-cheatsheet/diagrams/mindmaps/special-and-ai-reference.md"}]}
+  ]
+}

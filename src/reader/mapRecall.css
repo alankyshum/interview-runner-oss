@@ -1,0 +1,119 @@
+main [role='group'][aria-labelledby^='question-'] .mantine-Checkbox-label {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+main [role='group'][aria-labelledby^='question-'] .mantine-Checkbox-body {
+  align-items: center;
+}
+
+main [role='group'][aria-labelledby^='question-'] p[data-size='sm'],
+main:has(.map-recall-canvas) .mantine-Stack-root > p,
+aside[data-map-recall] .mantine-NavLink-root:not([data-active='true']) .mantine-NavLink-description,
+aside[data-map-recall] .mantine-Text-root[style*='color'] {
+  color: var(--ir-color-text-secondary) !important;
+}
+main [role='group'][aria-labelledby^='question-'] .mantine-Checkbox-label[data-disabled] { color: var(--ir-color-text-secondary); opacity: 1; }
+aside[data-map-recall] .mantine-Badge-root { background: var(--ir-color-raised); color: var(--ir-color-text); }
+
+main .mantine-Paper-root:has(> .mantine-Progress-root [aria-valuenow='100']) > p[aria-live='polite']::before {
+  content: '✓';
+  color: var(--ir-color-success);
+  margin-inline-end: 0.4em;
+}
+.map-recall-surface { flex: 1; min-width: 0; min-height: 0; container: map-surface / inline-size; }
+/* The header remains reachable when a long outline scrolls in the main pane. */
+.map-recall-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--ir-z-sticky);
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--mantine-spacing-xs);
+  padding-block: var(--mantine-spacing-xs);
+  background: light-dark(var(--ir-color-canvas), var(--ir-color-surface));
+}
+.map-recall-title { flex: 1 1 14rem; min-width: min(100%, 14rem); }
+.map-recall-title h1 { overflow-wrap: anywhere; }
+.map-recall-controls { display: flex; flex: 0 1 auto; flex-wrap: wrap; justify-content: flex-end; align-items: flex-start; gap: var(--mantine-spacing-xs); min-width: 0; max-width: 100%; margin-inline-start: auto; }
+.map-highlight-control { display: flex; flex: 0 0 auto; align-items: center; padding-inline-start: var(--mantine-spacing-xs); border-inline-start: 1px solid var(--ir-color-border); }
+.map-highlight-trigger { overflow: visible; }
+.map-highlight-icon { position: relative; display: inline-flex; }
+.map-highlight-count { position: absolute; inset-block-start: -8px; inset-inline-end: -12px; min-width: 16px; height: 16px; padding-inline: 3px; border-radius: var(--ir-radius-pill); background: var(--ir-color-primary-text); color: var(--ir-color-accent); font-size: .625rem; line-height: 16px; font-weight: 700; text-align: center; }
+.map-recall-controls:focus-visible, .map-recall-actions:focus-visible { outline: 2px solid var(--ir-color-focus); outline-offset: -2px; }
+.map-recall-view { flex: 0 0 auto; width: max-content; max-width: 100%; padding: 0; border-radius: var(--mantine-radius-default); }
+/* Overlay the border so each segment retains its full 44px touch target. */
+.map-recall-view::after { content: ''; position: absolute; inset: 0; border: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-default-border); border-radius: inherit; pointer-events: none; z-index: 2; }
+.map-recall-actions { flex: 0 1 auto; min-width: 0; max-width: 100%; }
+.map-recall-actions > * { flex-shrink: 0; }
+.map-fullscreen-menu { display: none; }
+.map-recall-error .mantine-Alert-label { color: var(--mantine-color-text); }
+
+.map-recall-view-label {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  outline-offset: -3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.map-recall-view-label span { display: flex; align-items: center; justify-content: center; }
+
+.map-recall-map { flex: 1; min-width: 0; min-height: 0; }
+.map-recall-canvas { flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 18rem; border: 1px solid var(--ir-color-border); border-radius: var(--ir-radius-default); overflow: hidden; background: var(--ir-color-canvas); color: var(--ir-color-text); container-type: inline-size; }
+.map-recall-svg { flex: 1; min-width: 0; min-height: 0; }
+.mantine-Modal-content.map-recall-fullscreen-content { display: flex; flex-direction: column; height: 100dvh; background: var(--ir-color-canvas); color: var(--ir-color-text); }
+.map-recall-fullscreen-header { flex: 0 0 auto; align-items: flex-start; gap: var(--mantine-spacing-xs); }
+.map-recall-fullscreen-heading { flex: 1 1 14rem; min-width: 0; overflow-wrap: anywhere; }
+.map-recall-fullscreen-title { flex: 1; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: var(--mantine-spacing-xs); }
+.map-recall-fullscreen-body { display: flex; flex-direction: column; flex: 1; min-height: 0; padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
+.map-recall-canvas .markmap { color: var(--mantine-color-text); font: 400 16px/24px var(--mantine-font-family); --markmap-text-color: var(--mantine-color-text); --markmap-a-color: var(--mantine-color-anchor); --markmap-a-hover-color: var(--mantine-color-anchor); --markmap-code-color: var(--mantine-color-text); --markmap-code-bg: var(--mantine-color-default-hover); --markmap-circle-open-bg: var(--mantine-color-body); }
+.map-recall-canvas .markmap-node .markmap-foreign > div:has(img) { width: min(640px, calc(100vw - 4rem)); }
+.map-recall-canvas .markmap-foreign img, .map-recall-outline img { max-width: 100%; height: auto; }
+.map-recall-canvas .map-toggle-hit:focus-visible { outline: 2px solid var(--mantine-primary-color-filled); }
+.map-recall-canvas .markmap-node[data-depth='2'] .markmap-foreign > div > div { min-height: 48px; }
+.map-recall-outline { flex-shrink: 0; }
+.map-recall-outline a { color: var(--mantine-color-anchor); }
+.map-recall-outline ul { padding-inline-start: 1.5rem; }
+.map-recall-outline button { min-width: 44px; min-height: 44px; }
+.map-recall-canvas foreignObject { user-select: text; -webkit-user-select: text; cursor: text; }
+.map-recall-canvas foreignObject, .map-recall-canvas foreignObject * { touch-action: none; }
+.map-recall-canvas mark[data-highlight-id], .map-highlight-snippet mark { background: var(--ir-color-highlight-bg); color: var(--ir-color-highlight); }
+.map-recall-canvas mark[data-highlight-id] { text-decoration: underline; text-decoration-thickness: 2px; cursor: pointer; }
+.map-recall-canvas mark[data-highlight-id]:focus-visible { outline: 2px solid var(--ir-color-focus); }
+.map-highlights-popover { max-width: calc(100vw - 16px); max-height: calc(100dvh - 16px); overflow: auto; overflow-wrap: anywhere; background: var(--ir-color-canvas); color: var(--ir-color-text); opacity: 1; }
+.map-highlights-popover { user-select: none; -webkit-user-select: none; }
+.map-context-anchor { position: fixed; width: 1px; height: 1px; padding: 0; border: 0; pointer-events: none; }
+.map-highlight-tree, .map-highlight-tree ul { list-style: none; margin: 0; padding: 0; }
+.map-highlight-tree { display: grid; gap: var(--mantine-spacing-md); }
+.map-highlight-tree ul { display: grid; gap: var(--mantine-spacing-sm); margin-top: var(--mantine-spacing-xs); }
+.map-highlight-item { position: relative; min-height: 44px; padding-inline-end: 48px; }
+.map-highlight-snippet { overflow-wrap: anywhere; white-space: pre-wrap; border-inline-start: 2px solid var(--ir-color-border); padding-inline-start: var(--mantine-spacing-sm); }
+.map-highlight-remove { position: absolute; inset-block-start: 0; inset-inline-end: 0; }
+.map-highlight-footer { padding-top: var(--mantine-spacing-sm); border-top: 1px solid var(--ir-color-border); }
+.map-highlight-path { overflow-wrap: anywhere; color: var(--ir-color-text-secondary); }
+.map-highlight-floating { position: fixed; z-index: var(--ir-z-floating); box-shadow: var(--ir-shadow-overlay); max-width: calc(100vw - 16px); }
+.map-highlight-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+@container (max-width: 400px) {
+  .map-recall-canvas .markmap-node[data-depth='2'] .markmap-foreign > div { width: min(128px, var(--markmap-max-width)); }
+}
+
+@container map-surface (max-width: 400px) {
+  .map-recall-controls { gap: 2px; }
+  .map-highlight-control { padding-inline-start: 1px; }
+}
+
+@media (max-width: 47.99em) {
+  .map-recall-controls { flex: 1 0 100%; margin-inline-start: 0; justify-content: flex-start; }
+  .map-recall-fullscreen-content .map-recall-controls { gap: 2px; }
+  .map-recall-fullscreen-content .map-highlight-control { padding-inline-start: 1px; }
+  .map-fullscreen-direct { display: none; }
+  .map-fullscreen-menu { display: flex; }
+  main:has([role='group'][aria-labelledby^='question-']) { height: calc(100dvh - 64px) !important; min-height: 0 !important; }
+}

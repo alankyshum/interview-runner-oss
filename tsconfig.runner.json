@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src", "shared", "server", "scripts", "vite.config.ts"],
+  "exclude": ["src/**/*.test.*", "server/**/*.test.*", "scripts/fixtures"]
+}

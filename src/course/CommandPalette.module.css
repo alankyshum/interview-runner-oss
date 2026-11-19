@@ -1,0 +1,20 @@
+.group::before {
+  content: none;
+}
+
+.groupLabel {
+  color: var(--ir-color-text-secondary);
+}
+
+.action {
+  --action-description-color: var(--ir-color-text-secondary);
+}
+
+.action[data-selected] {
+  background-color: var(--ir-color-selected-bg);
+  color: var(--ir-color-selected-fg);
+  box-shadow: inset 3px 0 0 var(--ir-color-selected-fg);
+  font-weight: 600;
+  --action-description-color: var(--ir-color-selected-fg);
+  --action-description-opacity: 1;
+}

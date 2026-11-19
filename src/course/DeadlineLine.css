@@ -1,0 +1,16 @@
+.deadline-line{display:flex;min-width:0;max-width:100%;white-space:nowrap;overflow:hidden;font-size:.75rem;line-height:1rem;font-weight:500;font-variant-numeric:tabular-nums;color:var(--ir-color-text-secondary);margin-bottom:2px}
+.deadline-line-heading{font-size:.75rem;line-height:1rem;margin-bottom:4px}
+.deadline-line[data-tone="soon"]{color:var(--ir-color-info);font-weight:600}
+.deadline-line[data-tone="overdue"]{color:var(--ir-color-danger)}
+.deadline-absolute{overflow:hidden;text-overflow:ellipsis}.deadline-relative,.deadline-separator{flex:none}
+.library-item-metadata{display:flex;align-items:center;gap:4px;min-width:0;max-width:100%;margin-bottom:2px}
+.deadline-row-line{display:flex;align-items:center;gap:4px;min-width:0;max-width:100%;overflow:hidden;white-space:nowrap;font-variant-numeric:tabular-nums}
+.metadata-pill{flex:none;padding:0 5px;border:1px solid var(--ir-color-control-border);border-radius:var(--ir-radius-pill);font-size:.75rem;line-height:1rem;font-weight:600;white-space:nowrap;background:var(--ir-color-raised);color:var(--ir-color-text)}
+.tier-pill[data-tier="1"]{background:var(--ir-color-info-bg);color:var(--ir-color-info);border-color:var(--ir-color-info)}
+.tier-pill[data-tier="2"]{background:var(--ir-color-warning-bg);color:var(--ir-color-warning);border-color:var(--ir-color-control-border)}
+.tier-pill[data-tier="3"]{background:var(--ir-color-raised);color:var(--ir-color-text-secondary)}
+.library-item-metadata:has(.tier-pill) .deadline-pill{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.deadline-pill[data-tone="soon"]{border-color:var(--ir-color-info);background:var(--ir-color-info-bg);color:var(--ir-color-info)}
+.deadline-pill[data-tone="overdue"]{border-color:var(--ir-color-danger);background:var(--ir-color-danger-bg);color:var(--ir-color-danger)}
+.deadline-row-relative{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.75rem;line-height:1rem;color:var(--ir-color-text-secondary)}
+@container (max-width:17.5rem){.library-item-row:has(.deadline-row-line) .library-item-metadata{width:calc(100% + 48px);max-width:none;margin-left:-24px;gap:1px}.library-item-row:has(.deadline-row-line) .deadline-row-line{gap:1px}.library-item-row:has(.deadline-row-line) .metadata-pill{padding-inline:4px}.library-item-row:has(.deadline-row-line) .library-item-kind,.library-item-row:has(.deadline-row-line) .library-item-grip,.library-item-row:has(.deadline-row-line) .library-item-actions{align-self:end;margin-bottom:2px}}

@@ -1,0 +1,22 @@
+{
+  "id": "sandbox-integration-fixture",
+  "title": "Sandbox integration fixture",
+  "chapters": [{
+    "id": "lifecycle",
+    "title": "Lifecycle",
+    "drills": [{
+      "id": "lifecycle",
+      "contentType": "ai-coding",
+      "title": "Lifecycle",
+      "kind": "logic",
+      "estMinutes": 5,
+      "sourcePath": "drills/sandbox-integration-fixture/lifecycle/workspace/src/value.ts",
+      "workspacePath": "drills/sandbox-integration-fixture/lifecycle/workspace",
+      "testRunner": "vitest",
+      "handoffPath": "guides/sandbox-integration-fixture/handoff.md",
+      "rubricPath": "guides/sandbox-integration-fixture/rubric.md",
+      "stageUnlock": { "mode": "manual" },
+      "instructions": "## Milestone 1\nChange the value.\n\n## Milestone 2\nVerify the result."
+    }]
+  }]
+}

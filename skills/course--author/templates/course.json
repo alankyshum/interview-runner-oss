@@ -1,0 +1,21 @@
+{
+  "id": "example",
+  "title": "Example course",
+  "chapters": [
+    {
+      "id": "foundations",
+      "title": "Foundations",
+      "drills": [
+        {
+          "id": "first-map",
+          "title": "First map",
+          "contentType": "map",
+          "kind": "scratch",
+          "estMinutes": 15,
+          "sourcePath": "mindmaps/example/first-map.md",
+          "instructions": "Explore the map."
+        }
+      ]
+    }
+  ]
+}

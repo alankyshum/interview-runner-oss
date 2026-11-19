@@ -1,0 +1,3 @@
+:where(code, pre, kbd, samp) {
+  font-family: var(--mantine-font-family-monospace);
+}

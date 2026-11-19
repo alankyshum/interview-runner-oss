@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "interview-runner self-host configuration",
+  "description": "The only host configuration. Validated by `node server-dist/selfhost.mjs env` inside the runner image (scripts/selfhost.ts mirrors these rules). Secrets never belong here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["stack", "port", "content", "db"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "stack": {
+      "description": "Instance name: Compose project, container-name prefix and sandbox instance scope.",
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,30}$"
+    },
+    "port": {
+      "description": "Loopback port the runner is published on (127.0.0.1 only).",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 65535
+    },
+    "owner": {
+      "description": "Content namespace of the courses at the root of the content checkout, and the workspace the Library opens by default. Directories under namespaces/<name>/ import as <name>. Changing it after first use leaves existing Library placements under the old name.",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,62}$",
+      "default": "me"
+    },
+    "content": {
+      "description": "Course content: a git repository cloned by `make sync` with the host's git credentials, or an existing directory (absolute, or ./… relative to config.json) mounted read-only.",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["git"],
+          "properties": {
+            "git": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9@:/._~+\\-]*$" },
+            "ref": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._/\\-]*$", "default": "main" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path"],
+          "properties": { "path": { "type": "string", "pattern": "^(/|\\./)[A-Za-z0-9._@+\\-/]+$" } }
+        }
+      ]
+    },
+    "db": {
+      "description": "Host path of the single user SQLite database: absolute, or ./… relative to config.json. content.db (cache), the git checkout, managed state and backups live next to it.",
+      "type": "string",
+      "pattern": "^(/|\\./)[A-Za-z0-9._@+\\-/]+$"
+    },
+    "private": {
+      "description": "Optional host directory of personal overrides kept outside the package: keybindings.json and settings.json replace the sandbox editor defaults (editor changes are written back to them), and legacy-reading.json lists the deprecated reading drills this host still serves, as {\"<course-id>\": [\"<drill-id>\"]}. Every file is optional.",
+      "type": "string",
+      "pattern": "^(/|\\./)[A-Za-z0-9._@+\\-/]+$"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "workbench.startupEditor": "none",
+  "telemetry.telemetryLevel": "off",
+  "update.mode": "none",
+  "extensions.autoUpdate": "off",
+  "extensions.autoCheckUpdates": false,
+  "workbench.enableExperiments": false,
+  "chat.disableAIFeatures": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 750,
+  "workbench.editor.enablePreview": false,
+  "workbench.layoutControl.enabled": false,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "window.commandCenter": false,
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredLightColorTheme": "Light Modern",
+  "workbench.preferredDarkColorTheme": "Dark Modern",
+  "breadcrumbs.enabled": false,
+  "workbench.welcomePage.walkthroughs.openOnInstall": false,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 120,
+  "editor.minimap.enabled": false,
+  "diffEditor.renderSideBySideInlineBreakpoint": 900,
+  "diffEditor.renderSideBySide": false,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "git.enabled": true,
+  "multiDiffEditor.experimental.fileList": true,
+  "editor.formatOnType": false,
+  "terminal.integrated.gpuAcceleration": "off",
+  "js/ts.experimental.useTsgo": true,
+  "js/ts.tsdk.path": "/opt/ir/node_modules/typescript",
+  "python.languageServer": "None",
+  "basedpyright.analysis.typeCheckingMode": "standard",
+  "ruff.lint.enable": true,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "typescript.format.semicolons": "remove"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "typescript.format.semicolons": "remove"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "javascript.format.semicolons": "remove"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "javascript.format.semicolons": "remove"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false
+  }
+}

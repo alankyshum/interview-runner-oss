@@ -1,0 +1,2 @@
+/* Width changes wrap text before Markmap recalculates node positions. */
+svg.markmap.map-reflow-pending .markmap-foreign { visibility: hidden; }

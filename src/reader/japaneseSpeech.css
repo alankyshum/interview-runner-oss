@@ -1,0 +1,18 @@
+.japanese-speech {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ir-radius-sm, 4px);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1em;
+  vertical-align: middle;
+}
+.japanese-speech[hidden] { display: none; }
+.japanese-speech::before { content: '🔊'; }
+.japanese-speech:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }

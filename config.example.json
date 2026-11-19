@@ -1,0 +1,7 @@
+{
+  "$schema": "./config.schema.json",
+  "stack": "interview-runner",
+  "port": 8081,
+  "content": { "path": "./sample-content" },
+  "db": "./data/user.sqlite"
+}

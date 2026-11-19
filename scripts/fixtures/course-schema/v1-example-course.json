@@ -1,0 +1,18 @@
+{
+  "id": "example-course",
+  "title": "Example Course",
+  "company": "Example",
+  "role": "Software Engineer",
+  "interviewDate": "2026-08-13",
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "Foundations",
+      "drills": [
+        { "id": "hello-logic", "contentType": "coding", "title": "Hello logic", "kind": "logic", "estMinutes": 10, "sourcePath": "drills/example-course/hello-logic/hello-logic.ts", "testPath": "drills/example-course/hello-logic/hello-logic.test.ts", "instructions": "### Build\nReturn a greeting string.\n\n### Done\nThe function returns the expected value." }
+      ]
+    }
+  ],
+  "createdAt": "2026-08-10T18:08:53-07:00",
+  "updatedAt": "2026-08-21T16:22:29-07:00"
+}
